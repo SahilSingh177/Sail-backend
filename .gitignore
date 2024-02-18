@@ -1,0 +1,5 @@
+# ingore env folder
+env/
+.python-version
+__pycache__/
+.env
