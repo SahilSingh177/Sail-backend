@@ -3,3 +3,4 @@ env/
 .python-version
 __pycache__/
 .env
+faiss_index/
