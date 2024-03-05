@@ -39,7 +39,7 @@ def get_vector_store(text_chunks):
 def get_conversational_chain():
 
     prompt_template = """
-    Answer the question as detailed as possible from the provided context, make sure to provide all the details. Use the context as much as possible\n\n
+    You're a chatbot designed to assist students in their studies. Their syllabus is the context you're provided with. Answer the question as detailed as possible from the provided context, make sure to provide all the details. Use the context as much as possible\n\n
     Context:\n {context}?\n
     Question: \n{question}\n
 
@@ -73,10 +73,13 @@ def user_input(user_question):
 
 
 def main():
-    st.set_page_config("Chat PDF")
-    st.header("Chat with PDF using Gemini💁")
+    st.markdown(
+        """<style>body{ #root > div:nth-child(1) > div.withScreencast > div > div > header > div.st-emotion-cache-zq5wmm.ezrtsby0 > div > button > div > span { display: none; } }</style>""",
+        unsafe_allow_html=True,
+    )
+    st.header("SAIL.ai")
 
-    user_question = st.text_input("Ask a Question from the PDF Files")
+    user_question = st.text_input("Ask a Question from the course material:")
 
     if user_question:
         user_input(user_question)
@@ -84,7 +87,7 @@ def main():
     with st.sidebar:
         st.title("Menu:")
         pdf_docs = st.file_uploader(
-            "Upload your PDF Files and Click on the Submit & Process Button",
+            "Select a course material (PDF) to upload:",
             accept_multiple_files=True,
         )
         if st.button("Submit & Process"):
